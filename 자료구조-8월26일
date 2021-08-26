@@ -1,0 +1,95 @@
+#pragma warning(disable : 4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+// 구조체란?
+// 구조체 종합선물세트
+// 구조체 --> 클래스(붕어빵틀) --> 객체(붕어빵)
+
+/*typedef struct stu Stu;
+struct stu {
+   //학생 이름, 나이, 성적
+   char name[10]; //멤버 변수, 필드
+   int age;
+   int score;
+};
+
+int mian() { // s1.age
+   Stu s1 = { "KIM", 17,90 };
+   Stu s2 = { "PARK",17,80 };
+
+   //구조체 변수를 초기화
+   // 문제 : 구조체를 출력해보세요.
+   printf("%s\n", s1.name);
+   printf("%d\n", s1.age);
+   printf("%d\n", s1.score);
+
+   return 0;
+}*/
+
+/*typedef struct STU stu;
+struct STU {
+   char name[10];
+   int age;
+};
+
+// 위랑 똑같은데 적는 방식이 다름
+typedef struct STU {
+   char name[10];
+   int age;
+}stu;
+
+int mian() {
+   stu* student; // * 붙어있으면 4바이트
+   student = (stu*)malloc(sizeof(stu)); // void --> 형변환
+
+   // student->name = "KIM"; 틀림
+   strcpy(student->name, "KIM");
+   // (*student).age - 17; 밑이랑 같은데 밑이 더 편해서 밑에거 처럼 씀
+   student->age = 17;
+
+   printf("%s %d\n", student->name, student->age);
+   free(student); // malloc으로 만들고 free로 메모리에서 해제
+
+   return 0;
+}*/
+
+// 이름과 나이를 저장해 출력해보기
+typedef struct STU stu;
+struct STU {
+	char name[10];
+	int age;
+};
+
+int mian() {
+	stu* student;
+	student = (stu*)malloc(sizeof(stu)); // 이해하기
+
+	strcpy(student->name, "PARK SO YOUNG");
+	student->age = 17;
+
+	printf("%s %d\n", student->name, student->age);
+	free(student);
+
+	return 0;
+}
+
+#include <stdio.h>
+#include <stdlib.h>	//malloc, free함수가 선언된 헤더파일
+#pragma warning(disable : 4996)
+//연결리스트, 링크리스트, linked list
+typedef struct NODE ND;
+struct NODE {		//연결 리스트의 노드 구조체
+	ND* next;	//다음 노드의 주소를 저장 할 포인터
+	int data;		//데이터를 저장 할 멤버
+};
+
+int main() {
+	ND* head = (ND*)malloc(sizeof(ND)); //머리 노드 생성
+	ND* node1 = (ND*)malloc(sizeof(ND)); //첫 번째 노드 생성
+	head->next = node1;
+	node1->data = 10;
+
+	free(node1);
+	return 0;
+}
