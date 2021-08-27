@@ -23,7 +23,7 @@
 //	node2->next = node3;
 //	node3->data = 30;
 //
-//	node3->next = NULL; //´õ ÀÌ»ó ³ëµå°¡ ¾ø´Ù.
+//	node3->next = NULL; //ë” ì´ìƒ ë…¸ë“œê°€ ì—†ë‹¤.
 //
 //
 //	ND* here = head->next;
@@ -39,7 +39,7 @@
 //}
 
 
-//¹öºíÁ¤·Ä
+//ë²„ë¸”ì •ë ¬
 #include <stdio.h>
 #include <stdlib.h>
 #pragma warning(disable : 4996)
@@ -62,15 +62,15 @@ void bubble1(int a[], int n) {
 		for (int i = 0; i < n - 1; i++) {
 			for (int j = 1; j < n; j++) {
 				if (a[j - 1] > a[j])
-					swap(int, a[j - 1], a[j]);	//¿À·ù		
+					swap(int, a[j - 1], a[j]);	//ì˜¤ë¥˜		
 		}
 	}
 }
 
 int main() {
 	int i, nx;
-	int* x; //µ¿ÀûÀ¸·Î ¹è¿­ Å©±â »ı¼º int x[5];
-	puts("¹öºí Á¤·Ä");
+	int* x; //ë™ì ìœ¼ë¡œ ë°°ì—´ í¬ê¸° ìƒì„± int x[5];
+	puts("ë²„ë¸” ì •ë ¬");
 	scanf("%d", &nx);
 	x = (int*)calloc(nx, sizeof(int));
 	//x = (int*)malloc(nx * sizeof(int));
@@ -80,7 +80,7 @@ int main() {
 		scanf("%d", &x[i]);
 	}
 	bubble1(x, nx);
-	puts("¿À¸§Â÷¼ø Á¤·Ä ¿Ï·á ÈÄ");
+	puts("ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬ ì™„ë£Œ í›„");
 	for (i = 0; i < nx; i++) {
 		printf("x[%d]=%d\n", i, x[i]);
 	}
