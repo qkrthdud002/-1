@@ -1,0 +1,89 @@
+//#include <stdio.h>
+//#include <stdlib.h> //malloc, free
+//#pragma warning(disable : 4996)
+//
+//typedef struct NODE ND;
+//struct NODE {
+//	struct NODE* next;
+//	int data;
+//};
+////Linked List
+//
+//int main() {
+//	ND* head = (ND*)malloc(sizeof(ND));
+//	ND* node1 = (ND*)malloc(sizeof(ND));
+//	head->next = node1;
+//	node1->data = 10;
+//
+//	ND* node2 = (ND*)malloc(sizeof(ND));
+//	node1->next = node2;
+//	node2->data = 20;
+//
+//	ND* node3 = (ND*)malloc(sizeof(ND));
+//	node2->next = node3;
+//	node3->data = 30;
+//
+//	node3->next = NULL; //더 이상 노드가 없다.
+//
+//
+//	ND* here = head->next;
+//	while (here != NULL) {
+//		printf("%d ", here->data);
+//		here = here->next;
+//	}
+//	free(node3);
+//	free(node2);
+//	free(node1);
+//	free(head);
+//	return 0;
+//}
+
+
+//버블정렬
+#include <stdio.h>
+#include <stdlib.h>
+#pragma warning(disable : 4996)
+
+#define swap(type, x, y){type t=x;x=y;y=t}
+#define swap1(t,x,y){t=x;x=y;y=t;}
+
+//#define swap(x,y,t)((t)=(x),(x)=(y),(y)=(t))
+
+void bubble(int a[], int n) {
+	int t;
+	for (int i = 0; i < n - 1; i++) {
+		for (int j = n - 1; j > i; j--) {
+			if (a[j - 1] > a[j])
+				swap1(t, a[j - 1], a[j]);
+		}
+	}
+}
+void bubble1(int a[], int n) {
+		for (int i = 0; i < n - 1; i++) {
+			for (int j = 1; j < n; j++) {
+				if (a[j - 1] > a[j])
+					swap(int, a[j - 1], a[j]);	//오류		
+		}
+	}
+}
+
+int main() {
+	int i, nx;
+	int* x; //동적으로 배열 크기 생성 int x[5];
+	puts("버블 정렬");
+	scanf("%d", &nx);
+	x = (int*)calloc(nx, sizeof(int));
+	//x = (int*)malloc(nx * sizeof(int));
+
+	for (i = 0; i < nx; i++) {
+		printf("x[%d]: ", i);
+		scanf("%d", &x[i]);
+	}
+	bubble1(x, nx);
+	puts("오름차순 정렬 완료 후");
+	for (i = 0; i < nx; i++) {
+		printf("x[%d]=%d\n", i, x[i]);
+	}
+	free(x);
+	return 0;
+}
