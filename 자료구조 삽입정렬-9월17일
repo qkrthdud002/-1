@@ -1,0 +1,55 @@
+#pragma warning(disable : 4996)
+#include <stdio.h>
+
+//int insertionSort(int arr[], int n) {
+//	//삽입 정렬, arr은 배열의 이름
+//	int i, j, tmp;
+//	for (i = 1; i < n; i++) {
+//		tmp = arr[i]; //tmp의 값이 삽입
+//		for (j = i - 1; j >= 0 && arr[j] > tmp; j--) {
+//			arr[j + 1] = arr[j]; //배열 앞의 값이 뒤로 이동
+//		}
+//		arr[j + 1] = tmp;
+//	}
+//}
+//int main() {
+//	int list[] = { 3,4,1,8,5 };
+//	int n = sizeof(list) / sizeof(int);
+//	insertionSort(list, n); //삽입정렬 호출
+//	for (int i = 0; i < n; i++)
+//		printf("%d ", list[i]);
+//	return 0;
+//}
+
+
+//추가 코드
+//insertion sort
+static void insertionSort(int Array[], int n) {
+	for (int i = 1; i < n; i++) {
+		int tmp = Array[i];
+		int j = i - 1;
+		while (j >= 0 && tmp < Array[j]) {
+			Array[j + 1] = Array[j];
+			//arr[j] = tmp;
+			j = j - 1;
+		}
+		Array[j + 1] = tmp;
+	}
+}
+static void PrintArray(int Array[], int n) {
+	for (int i = 0; i < n; i++) {
+		printf("%i ", Array[i]);
+	}
+	printf("\n");
+}
+int main() {
+	int arr[] = { 1,10,23,50,4,9,-4 };
+	int n = sizeof(arr) / sizeof(arr[0]);
+	printf("Original Array\n");
+	PrintArray(arr, n);
+
+	insertionSort(arr, n);
+	printf("\nSorted Array\n");
+	PrintArray(arr, n);
+	return 0;
+}
